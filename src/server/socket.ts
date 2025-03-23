@@ -14,8 +14,8 @@ export class Sockets {
             console.log("Client connected", socket.id);
             socket.emit("message", "Welcome to the server");
 
-            socket.on("message", (data) => {
-                console.log(data);
+            socket.on("io:message", (data) => {
+                console.log("Message s: ",data);
                 this.io.emit("message", "data received");
             });
         })
