@@ -1,0 +1,23 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "ts-node-dev src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeison Ferrer Joferrer",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "4.21.2",
+    "socket.io": "4.8.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.2"
+  }
+}
