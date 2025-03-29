@@ -1,18 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="cat.css">
     <title>Sockets test</title>
 </head>
-<body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js" integrity="sha512-8BHxHDLsOHx+flIrQ0DrZcea7MkHqRU5GbTHmbdzMRnAaoCIkZ97PqZcXJkKZckMMhqfoeaJE+DNUVuyoQsO3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <h1>Sockets test</h1>
 
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.js"
+        integrity="sha512-8BHxHDLsOHx+flIrQ0DrZcea7MkHqRU5GbTHmbdzMRnAaoCIkZ97PqZcXJkKZckMMhqfoeaJE+DNUVuyoQsO3Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    <div class="flex items-center justify-center h-screen bg-gray-900">
+        <div class="relative bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full text-white">
+            <div class="absolute -top-34 flex justify-center items-center right-0">
+                <div class="container">
+                    <div class="shadow"></div>
+                    <div class="cat">
+                        <div class="ear"></div>
+                        <div class="eye"></div>
+                        <div class="mouth"></div>
+                        <div class="nose"></div>
+                        <div class="tail"></div>
+                        <div class="body"></div>
+                        <div class="bubble"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-semibold mb-4 text-center">¡Programa tu comedero!</h2>
+            <p class="text-gray-700 mb-4"></p>
+            <form action="" class="flex flex-row w-full">
+
+                <div class="w-full">
+                    <label for="time" class="block mb-2 text-md font-medium text-white">Hora de alimentar:</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <input type="time" id="time"
+                            class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            min="09:00" max="18:00" value="00:00" required />
+                    </div>
+                </div>
+
+
+            </form>
+            <div class="mt-5">
+                <span id="badge-dismiss-yellow" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">
+                    9:00 AM
+                    <button type="button" class="inline-flex items-center p-1 ms-2 text-sm text-yellow-400 bg-transparent rounded-xs hover:bg-yellow-200 hover:text-yellow-900 dark:hover:bg-yellow-800 dark:hover:text-yellow-300" data-dismiss-target="#badge-dismiss-yellow" aria-label="Remove">
+                    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Remove badge</span>
+                    </button>
+                    </span>
+                    
+                    
+            </div>
+            <div class="flex justify-end">
+                <button class="bg-[#f19b1a] text-white px-4 py-2 rounded hover:bg-[#f19b1a]/90 mt-5">Registrar</button>
+
+            </div>
+        </div>
+
+    </div>
 
     <script>
-        const socket = io('https://arduino-sockets-production.up.railway.app',{
-            path:"/io"
+        const socket = io('https://arduino-sockets-production.up.railway.app', {
+            path: "/io"
         });
         // const socket = io('http://localhost:3000',{
         //     path:"/io"
@@ -27,4 +93,5 @@
         });
     </script>
 </body>
+
 </html>
