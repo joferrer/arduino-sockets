@@ -15,10 +15,10 @@ export class WsServer {
             ws.on("message", (msg,isBinary) => {
             
                     console.log("isBinary",isBinary);
-                    if(isBinary){
-                        console.log("📩 Mensaje de WebSockets:", msg);
-                        ws.send("📢 Respuesta del servidor");
-                    }
+                    
+                    console.log("📩 Mensaje de WebSockets:", msg.toString());
+                    ws.send("Respuesta del servidor");
+                    
 
                 
             });

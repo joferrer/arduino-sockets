@@ -11,12 +11,12 @@
 
 
     <script>
-        const socket = io('https://arduino-sockets-production.up.railway.app',{
-            path:"/io"
-        });
-        // const socket = io('http://localhost:3000',{
+        // const socket = io('https://arduino-sockets-production.up.railway.app',{
         //     path:"/io"
         // });
+        const socket = io('http://localhost:3000',{
+            path:"/io"
+        });
 
         socket.on('connect', () => {
             console.log('Connected to server');
