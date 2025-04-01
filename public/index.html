@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,16 @@
         integrity="sha512-8BHxHDLsOHx+flIrQ0DrZcea7MkHqRU5GbTHmbdzMRnAaoCIkZ97PqZcXJkKZckMMhqfoeaJE+DNUVuyoQsO3Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+        <dialog id="agregadofallo-dialog" closedby="any">
+            <div class="flex flex-col items-center justify-center p-4 bg-red-500 text-white rounded-lg shadow-lg">
+                <h2 class="text-lg font-semibold">Error</h2>
+                <p class="mt-2">No se pudo agregar la hora.</p>
+                <form method="dialog">
+                    <button id="close-agregadofallo-dialog" class="mt-4 bg-red-700 text-white px-4 py-2 rounded hover:bg-red-600">Cerrar</button>
+                </form>
+                
+            </div>
+        </dialog>
 
     <div class="flex items-center justify-center h-screen bg-gray-900">
         <div class="relative bg-gray-800 p-6 rounded-lg shadow-lg max-w-sm w-full text-white">
@@ -54,27 +64,17 @@
 
 
             </form>
-            <div class="mt-5">
-                <span id="badge-dismiss-yellow" class="inline-flex items-center px-2 py-1 me-2 text-sm font-medium text-yellow-800 bg-yellow-100 rounded-sm dark:bg-yellow-900 dark:text-yellow-300">
-                    9:00 AM
-                    <button type="button" class="inline-flex items-center p-1 ms-2 text-sm text-yellow-400 bg-transparent rounded-xs hover:bg-yellow-200 hover:text-yellow-900 dark:hover:bg-yellow-800 dark:hover:text-yellow-300" data-dismiss-target="#badge-dismiss-yellow" aria-label="Remove">
-                    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Remove badge</span>
-                    </button>
-                    </span>
-                    
+            <div id="horas-container" class="mt-5">
                     
             </div>
             <div class="flex justify-end">
-                <button class="bg-[#f19b1a] text-white px-4 py-2 rounded hover:bg-[#f19b1a]/90 mt-5">Registrar</button>
+                <button id="btn-guardar" disabled class="disabled:bg-gray-400 bg-[#f19b1a] text-white px-4 py-2 rounded hover:bg-[#f19b1a]/90 mt-5">Guardar</button>
 
             </div>
         </div>
 
     </div>
-
+    <script src="./script.js"></script>
     <script>
         const socket = io('https://arduino-sockets-production.up.railway.app', {
             path: "/io"
