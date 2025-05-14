@@ -1,0 +1,9 @@
+### Publicar hora
+POST http://localhost:3000/api/programar HTTP/1.1
+content-type: application/json
+
+{
+    "id": "04:55",
+    "hora": 16,
+    "minuto": 55
+}

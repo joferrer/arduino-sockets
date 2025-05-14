@@ -8,6 +8,8 @@ import { Sockets } from "./socket";
 import {WebSocketServer} from "ws"
 import { WsServer } from "./wsServer";
 
+import {router as horariosRouter} from '../routes/horario'
+
 class Server {
     private port: number;
     private app: express.Application;
@@ -37,11 +39,16 @@ class Server {
         new WsServer(this.wss);
     }
 
+    routes(){
+        this.app.use('/api',horariosRouter)
+    }
+
     start(){
 
         this.middlewares();
         this.socketConfig();
         this.wssSocketConfig();
+        this.routes()
 
         this.server.listen(this.port, () => {
             console.log(`Server is running at http://localhost:${this.port}!`);
