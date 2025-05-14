@@ -3,7 +3,17 @@ POST http://localhost:3000/api/programar HTTP/1.1
 content-type: application/json
 
 {
-    "id": "04:55",
-    "hora": 16,
-    "minuto": 55
+    "id": "05:37",
+    "hora": 17,
+    "minuto": 37
+}
+
+### Publicar hora prod
+POST https://arduino-sockets-production.up.railway.app/api/programar HTTP/1.1
+content-type: application/json
+
+{
+    "id": "05:25",
+    "hora": 17,
+    "minuto": 25
 }

@@ -1,3 +1,10 @@
+import dayjs  from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
 type Task = {
   timeoutId: NodeJS.Timeout;
   hora: number;
@@ -7,17 +14,19 @@ type Task = {
 const tareas = new Map<string, Task>();
 
 function programarTarea(id: string, hora: number, minuto: number, accion: () => void) {
-  const ahora = new Date();
-  const destino = new Date();
+  const ahora = dayjs().tz('America/Bogota'); // hora actual en Colombia
+  let destino = dayjs().tz('America/Bogota').hour(hora).minute(minuto).second(0).millisecond(0);
 
-  destino.setHours(hora, minuto, 0, 0);
+  
+  //destino.setHours(hora, minuto, 0, 0);
 
   // Si ya pasó hoy, se programa para mañana
-  if (destino <= ahora) {
-    destino.setDate(destino.getDate() + 1);
+  if (destino.isBefore(ahora)) {
+    destino = destino.add(1, 'day'); // programar para el día siguiente si ya pasó
   }
+    console.log(`(${ahora.format()}) -Programando tarea ${id} para ${hora}:${minuto} (${destino.format()})`);
 
-  const delay = destino.getTime() - ahora.getTime();
+   const delay = destino.valueOf() - ahora.valueOf();
 
   const timeoutId = setTimeout(() => {
     accion();
